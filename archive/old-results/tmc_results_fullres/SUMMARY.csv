@@ -1,0 +1,16 @@
+pair,imageA,imageB,status,our_pipeline_inliers,native_subpixel_rmse,grid_coverage_pct,sift_baseline_inliers,extracted_rotation_deg,extracted_zoom_scale,elapsed_s
+nca_0811_vs_nca_0812,ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png,ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png,REJECTED,5,0.165,80.0,4,78.21,1.432,21.7
+nca_0811_vs_ncf_0811,ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png,ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png,REJECTED,5,1.2773,100.0,4,82.9,0.809,26.3
+nca_0811_vs_ncf_0812,ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png,ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png,REJECTED,5,0.7219,100.0,4,116.13,1.822,15.2
+nca_0811_vs_ncn_0811,ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png,ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png,REJECTED,15,1.2381,100.0,197,-1.06,1.066,19.2
+nca_0811_vs_ncn_0812,ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png,ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png,REJECTED,5,0.9048,100.0,4,-120.61,0.37,17.7
+nca_0812_vs_ncf_0811,ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png,ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png,REJECTED,4,0.0005,92.0,5,99.19,2.259,26.8
+nca_0812_vs_ncf_0812,ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png,ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png,REJECTED,5,0.774,100.0,4,94.24,0.462,23.2
+nca_0812_vs_ncn_0811,ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png,ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png,REJECTED,4,0.0005,92.0,4,-87.66,0.621,21.9
+nca_0812_vs_ncn_0812,ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png,ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png,REJECTED,22,1.4028,100.0,227,-0.94,1.071,12.4
+ncf_0811_vs_ncf_0812,ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png,ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png,REJECTED,5,1.0672,96.0,4,-68.86,0.777,19.1
+ncf_0811_vs_ncn_0811,ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png,ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png,REJECTED,12,1.3936,100.0,106,-5.53,1.118,12.8
+ncf_0811_vs_ncn_0812,ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png,ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png,REJECTED,5,1.2135,96.0,4,81.21,4.951,17.3
+ncf_0812_vs_ncn_0811,ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png,ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png,REJECTED,5,0.7223,100.0,4,-21.81,0.563,14.1
+ncf_0812_vs_ncn_0812,ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png,ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png,REJECTED,11,1.5826,100.0,141,-5.78,1.065,14.0
+ncn_0811_vs_ncn_0812,ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png,ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png,REJECTED,5,0.8183,96.0,4,79.2,0.788,17.4

@@ -1,0 +1,647 @@
+[
+  {
+    "pair": "nca_0811_vs_nca_0812",
+    "imageA": "ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png",
+    "imageB": "ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16202
+    ],
+    "imageB_px": [
+      4000,
+      15149
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 0.165,
+    "grid_coverage_pct": 80.0,
+    "sift_baseline_raw": 13,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": 78.21,
+    "extracted_zoom_scale": 1.432,
+    "shift_x": 2002.7,
+    "shift_y": 11919.1,
+    "homography_matrix": [
+      [
+        0.13963815737745303,
+        -0.3865753511455958,
+        2002.6881685815665
+      ],
+      [
+        0.6687846277773619,
+        -2.1470338044240544,
+        11919.074892062248
+      ],
+      [
+        3.3661428070499697e-05,
+        -0.00017173829913043838,
+        1.0
+      ]
+    ],
+    "elapsed_s": 21.7,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0811_vs_ncf_0811",
+    "imageA": "ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16202
+    ],
+    "imageB_px": [
+      4000,
+      16203
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 1.2773,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 8,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": 82.9,
+    "extracted_zoom_scale": 0.809,
+    "shift_x": 1067.1,
+    "shift_y": 9362.3,
+    "homography_matrix": [
+      [
+        0.08756694982904599,
+        -0.0954097496640218,
+        1067.0530444929027
+      ],
+      [
+        0.703070049394513,
+        -0.9053382067381351,
+        9362.275458288732
+      ],
+      [
+        9.305884828623305e-05,
+        -9.654186657383748e-05,
+        1.0
+      ]
+    ],
+    "elapsed_s": 26.3,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0811_vs_ncf_0812",
+    "imageA": "ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16202
+    ],
+    "imageB_px": [
+      4000,
+      15149
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 0.7219,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 5,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": 116.13,
+    "extracted_zoom_scale": 1.822,
+    "shift_x": 1864.4,
+    "shift_y": 17114.0,
+    "homography_matrix": [
+      [
+        -0.7072921056700094,
+        0.10130335962557546,
+        1864.4150503101753
+      ],
+      [
+        1.4419296983533343,
+        -2.035265408572125,
+        17113.966324444616
+      ],
+      [
+        4.6138237935093514e-05,
+        -2.447077996617523e-05,
+        0.9999999999999999
+      ]
+    ],
+    "elapsed_s": 15.2,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0811_vs_ncn_0811",
+    "imageA": "ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16202
+    ],
+    "imageB_px": [
+      4000,
+      16202
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 15,
+    "native_subpixel_rmse": 1.2381,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 236,
+    "sift_baseline_inliers": 197,
+    "extracted_rotation_deg": -1.06,
+    "extracted_zoom_scale": 1.066,
+    "shift_x": -271.0,
+    "shift_y": 10716.0,
+    "homography_matrix": [
+      [
+        1.1139707067442322,
+        0.00041222520275222934,
+        -270.9519441405997
+      ],
+      [
+        -0.020554142638808802,
+        1.0184013550580806,
+        10716.04714512948
+      ],
+      [
+        9.973478804372346e-09,
+        4.899499977411355e-07,
+        1.0
+      ]
+    ],
+    "elapsed_s": 19.2,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0811_vs_ncn_0812",
+    "imageA": "ch2_tmc_nca_20260811T1856504587_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16202
+    ],
+    "imageB_px": [
+      4000,
+      15148
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 0.9048,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 8,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": -120.61,
+    "extracted_zoom_scale": 0.37,
+    "shift_x": 1184.0,
+    "shift_y": 1918.0,
+    "homography_matrix": [
+      [
+        -0.36311146107055237,
+        -0.01901628299321316,
+        1184.02768587334
+      ],
+      [
+        -0.6136352988273357,
+        -0.020456776805836317,
+        1917.9842719991987
+      ],
+      [
+        -0.0003195230187717374,
+        -1.3593281768661046e-05,
+        0.9999999999999999
+      ]
+    ],
+    "elapsed_s": 17.7,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0812_vs_ncf_0811",
+    "imageA": "ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      15149
+    ],
+    "imageB_px": [
+      4000,
+      16203
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 4,
+    "native_subpixel_rmse": 0.0005,
+    "grid_coverage_pct": 92.0,
+    "sift_baseline_raw": 7,
+    "sift_baseline_inliers": 5,
+    "extracted_rotation_deg": 99.19,
+    "extracted_zoom_scale": 2.259,
+    "shift_x": 3966.2,
+    "shift_y": 14092.2,
+    "homography_matrix": [
+      [
+        -0.2968363487453232,
+        -0.4025575282026734,
+        3966.2292794043383
+      ],
+      [
+        1.8347929349868726,
+        -2.6284682658453247,
+        14092.166840596115
+      ],
+      [
+        -2.681837233819231e-05,
+        -0.00010223733840881776,
+        1.0
+      ]
+    ],
+    "elapsed_s": 26.8,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0812_vs_ncf_0812",
+    "imageA": "ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      15149
+    ],
+    "imageB_px": [
+      4000,
+      15149
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 0.774,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 7,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": 94.24,
+    "extracted_zoom_scale": 0.462,
+    "shift_x": 2912.2,
+    "shift_y": 10713.0,
+    "homography_matrix": [
+      [
+        -0.007857068722117997,
+        -0.2085797099591752,
+        2912.1960446037133
+      ],
+      [
+        0.10591934453650387,
+        -0.7914717511873135,
+        10713.01173278337
+      ],
+      [
+        3.326173251932006e-06,
+        -7.232910803637957e-05,
+        1.0
+      ]
+    ],
+    "elapsed_s": 23.2,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0812_vs_ncn_0811",
+    "imageA": "ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      15149
+    ],
+    "imageB_px": [
+      4000,
+      16202
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 4,
+    "native_subpixel_rmse": 0.0005,
+    "grid_coverage_pct": 92.0,
+    "sift_baseline_raw": 4,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": -87.66,
+    "extracted_zoom_scale": 0.621,
+    "shift_x": 523.7,
+    "shift_y": 7463.6,
+    "homography_matrix": [
+      [
+        0.03432408890571375,
+        -0.025714888189444736,
+        523.6715875197912
+      ],
+      [
+        -0.8414402183027329,
+        -0.39865459065476794,
+        7463.584134197374
+      ],
+      [
+        2.3962724285243582e-05,
+        -7.304290850496562e-05,
+        1.0
+      ]
+    ],
+    "elapsed_s": 21.9,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "nca_0812_vs_ncn_0812",
+    "imageA": "ch2_tmc_nca_20260812T0506149385_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      15149
+    ],
+    "imageB_px": [
+      4000,
+      15148
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 22,
+    "native_subpixel_rmse": 1.4028,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 247,
+    "sift_baseline_inliers": 227,
+    "extracted_rotation_deg": -0.94,
+    "extracted_zoom_scale": 1.071,
+    "shift_x": -268.3,
+    "shift_y": 10185.2,
+    "homography_matrix": [
+      [
+        1.112419361894722,
+        0.00022786068756678056,
+        -268.26779131936775
+      ],
+      [
+        -0.018308306512767807,
+        1.0298044603014866,
+        10185.238688779133
+      ],
+      [
+        -1.8189671224289907e-06,
+        5.12031366189562e-07,
+        1.0
+      ]
+    ],
+    "elapsed_s": 12.4,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "ncf_0811_vs_ncf_0812",
+    "imageA": "ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16203
+    ],
+    "imageB_px": [
+      4000,
+      15149
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 1.0672,
+    "grid_coverage_pct": 96.0,
+    "sift_baseline_raw": 11,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": -68.86,
+    "extracted_zoom_scale": 0.777,
+    "shift_x": -1214.2,
+    "shift_y": 8651.0,
+    "homography_matrix": [
+      [
+        0.26213913267668926,
+        0.12282457201518487,
+        -1214.1894780178245
+      ],
+      [
+        -0.6778381424731079,
+        -0.8175924817990659,
+        8651.026368499517
+      ],
+      [
+        5.092548728178206e-06,
+        -9.857569740588797e-05,
+        1.0
+      ]
+    ],
+    "elapsed_s": 19.1,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "ncf_0811_vs_ncn_0811",
+    "imageA": "ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16203
+    ],
+    "imageB_px": [
+      4000,
+      16202
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 12,
+    "native_subpixel_rmse": 1.3936,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 165,
+    "sift_baseline_inliers": 106,
+    "extracted_rotation_deg": -5.53,
+    "extracted_zoom_scale": 1.118,
+    "shift_x": -247.0,
+    "shift_y": -11410.7,
+    "homography_matrix": [
+      [
+        1.1557978325223823,
+        0.005011707532578757,
+        -246.9517468927593
+      ],
+      [
+        -0.11190404551908283,
+        1.0739049973486197,
+        -11410.704727943348
+      ],
+      [
+        1.8974479340037668e-06,
+        2.61934336680473e-06,
+        1.0
+      ]
+    ],
+    "elapsed_s": 12.8,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "ncf_0811_vs_ncn_0812",
+    "imageA": "ch2_tmc_ncf_20260811T1856504555_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16203
+    ],
+    "imageB_px": [
+      4000,
+      15148
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 1.2135,
+    "grid_coverage_pct": 96.0,
+    "sift_baseline_raw": 7,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": 81.21,
+    "extracted_zoom_scale": 4.951,
+    "shift_x": 4996.4,
+    "shift_y": -700.9,
+    "homography_matrix": [
+      [
+        0.9386990181470862,
+        -2.9487239799798974,
+        4996.413371728539
+      ],
+      [
+        6.072457729304065,
+        -2.329183935920742,
+        -700.8754024787877
+      ],
+      [
+        0.00043742148810548264,
+        -0.0004489353227337842,
+        1.0
+      ]
+    ],
+    "elapsed_s": 17.3,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "ncf_0812_vs_ncn_0811",
+    "imageA": "ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      15149
+    ],
+    "imageB_px": [
+      4000,
+      16202
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 0.7223,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 10,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": -21.81,
+    "extracted_zoom_scale": 0.563,
+    "shift_x": -1181.6,
+    "shift_y": -355.3,
+    "homography_matrix": [
+      [
+        0.7151710668596765,
+        0.16431749316347782,
+        -1181.5531793973657
+      ],
+      [
+        -0.28617145254144893,
+        0.315839479980345,
+        -355.2872218477677
+      ],
+      [
+        0.0002289967755554197,
+        -6.274791646891547e-05,
+        0.9999999999999999
+      ]
+    ],
+    "elapsed_s": 14.1,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "ncf_0812_vs_ncn_0812",
+    "imageA": "ch2_tmc_ncf_20260812T0506149385_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      15149
+    ],
+    "imageB_px": [
+      4000,
+      15148
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 11,
+    "native_subpixel_rmse": 1.5826,
+    "grid_coverage_pct": 100.0,
+    "sift_baseline_raw": 271,
+    "sift_baseline_inliers": 141,
+    "extracted_rotation_deg": -5.78,
+    "extracted_zoom_scale": 1.065,
+    "shift_x": -139.5,
+    "shift_y": -10173.0,
+    "homography_matrix": [
+      [
+        1.0965266144174544,
+        -0.002082712524860969,
+        -139.48144344579924
+      ],
+      [
+        -0.11105160111997583,
+        1.02729323999837,
+        -10172.997517769203
+      ],
+      [
+        1.319122988977251e-06,
+        -1.041062619873757e-06,
+        1.0
+      ]
+    ],
+    "elapsed_s": 14.0,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  },
+  {
+    "pair": "ncn_0811_vs_ncn_0812",
+    "imageA": "ch2_tmc_ncn_20260811T1856504555_d_img_d18_full.png",
+    "imageB": "ch2_tmc_ncn_20260812T0506149385_d_img_d18_full.png",
+    "imageA_px": [
+      4000,
+      16202
+    ],
+    "imageB_px": [
+      4000,
+      15148
+    ],
+    "status": "REJECTED",
+    "our_pipeline_inliers": 5,
+    "native_subpixel_rmse": 0.8183,
+    "grid_coverage_pct": 96.0,
+    "sift_baseline_raw": 6,
+    "sift_baseline_inliers": 4,
+    "extracted_rotation_deg": 79.2,
+    "extracted_zoom_scale": 0.788,
+    "shift_x": 210.1,
+    "shift_y": -400.8,
+    "homography_matrix": [
+      [
+        0.2587126482357806,
+        -0.05778171995341657,
+        210.06419017739117
+      ],
+      [
+        1.355860556012312,
+        -0.18779060362398053,
+        -400.76794587063574
+      ],
+      [
+        0.00028062813163770936,
+        -0.0001215247629891931,
+        1.0
+      ]
+    ],
+    "elapsed_s": 17.4,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "sift_mode": "thumbnail-2048 + GPU LoFTR AMP"
+  }
+]

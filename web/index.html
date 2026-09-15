@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LunarMatch Console — SIH 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Animated background grid -->
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="scanline" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon" aria-hidden="true">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="16" stroke="var(--acc)" stroke-width="1.5" stroke-dasharray="4 3" class="spin-slow"/>
+        <circle cx="20" cy="20" r="10" stroke="var(--acc)" stroke-width="1" opacity=".5"/>
+        <circle cx="20" cy="20" r="3" fill="var(--acc)" class="pulse-dot"/>
+        <circle cx="28" cy="14" r="2" fill="var(--ok)" opacity=".7" class="blink"/>
+        <circle cx="14" cy="26" r="1.5" fill="var(--acc)" opacity=".5" class="blink-delay"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <strong>LunarMatch</strong>
+      <span>SIH 2026 · Chandrayaan-2 · Adaptive Registration</span>
+    </div>
+  </div>
+  <nav aria-label="Sections">
+    <a href="#upload" class="nav-link active" data-section="upload">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Upload
+    </a>
+    <a href="#pipeline" class="nav-link" data-section="pipeline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m-5.66-2.34 4.24-4.24m0-6.72L6.34 6.34M23 12h-6m-6 0H1m2.34 5.66 4.24-4.24m6.72-6.72 4.24-4.24"/></svg>
+      Pipeline
+    </a>
+    <a href="#results" class="nav-link" data-section="results">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Results
+    </a>
+    <a href="#history" class="nav-link" data-section="history">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      History
+    </a>
+  </nav>
+  <div class="srv">
+    <span id="srvDot" class="dot idle" aria-hidden="true"></span>
+    <span id="srvTxt">connecting…</span>
+  </div>
+</header>
+
+<main>
+  <!-- UPLOAD SECTION -->
+  <section id="upload" class="panel">
+    <div class="panel-header">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Reference → Target Registration
+      </h2>
+      <p class="lede">Upload a <strong>Reference</strong> (small crop) and a <strong>Target</strong> (full scene). The pipeline runs Modules 1→5: shadow lift, SIFT+LoFTR coarse lock, ROI dense matching, ANMS suppression, Lucas-Kanade sub-pixel refinement.</p>
+    </div>
+
+    <div class="upload-grid">
+      <div class="upload-card" id="refCard">
+        <div class="upload-zone" id="refZone" tabindex="0" role="button" aria-label="Upload reference image">
+          <div class="upload-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="upload-label">Reference Image</span>
+          <span class="upload-hint">Drop or click — small crop to search</span>
+          <input type="file" id="refFile" accept="image/*,.png,.jpg,.jpeg,.tif,.tiff,.img" hidden>
+        </div>
+        <div class="upload-meta" id="metaSrc">no file</div>
+      </div>
+
+      <div class="upload-arrow" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
+      <div class="upload-card" id="tgtCard">
+        <div class="upload-zone" id="tgtZone" tabindex="0" role="button" aria-label="Upload target image">
+          <div class="upload-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M16 2v20"/><path d="M2 12h20"/><path d="M2 7h5m5 0h5M2 17h5m5 0h5"/></svg>
+          </div>
+          <span class="upload-label">Target Image</span>
+          <span class="upload-hint">Drop or click — full scene to search in</span>
+          <input type="file" id="tgtFile" accept="image/*,.png,.jpg,.jpeg,.tif,.tiff,.img" hidden>
+        </div>
+        <div class="upload-meta" id="metaFull">no file</div>
+      </div>
+    </div>
+
+    <div class="crop-section" id="cropSection" style="display:none">
+      <div class="crop-header">
+        <span class="crop-title">Reference Preview — Drag to Crop</span>
+        <button id="clearCrop" class="btn-sm">Clear Crop</button>
+      </div>
+      <div class="crop-container">
+        <canvas id="cropCanvas"></canvas>
+      </div>
+      <div class="crop-info" id="cropInfo">No crop — whole reference will be searched</div>
+    </div>
+
+    <button id="regBtn" class="cta-btn" disabled>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <span>Launch Registration Pipeline</span>
+    </button>
+
+    <div id="regOut" class="reg-out"></div>
+  </section>
+
+  <!-- PIPELINE SECTION -->
+  <section id="pipeline" class="panel">
+    <div class="panel-header">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/></svg>
+        Pipeline Monitor
+      </h2>
+    </div>
+
+    <!-- Animated pipeline visualization -->
+    <div class="pipeline-vis" id="pipelineVis">
+      <div class="pipeline-stage" data-stage="0">
+        <div class="stage-ring">
+          <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+        </div>
+        <div class="stage-info">
+          <span class="stage-name">Phase 1</span>
+          <span class="stage-label">Preprocessing</span>
+          <span class="stage-detail">CLAHE · Hapke · Pyramid</span>
+        </div>
+        <div class="stage-status" id="stage0">Idle</div>
+      </div>
+
+      <div class="pipeline-connector"><div class="connector-line"></div></div>
+
+      <div class="pipeline-stage" data-stage="1">
+        <div class="stage-ring">
+          <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+        </div>
+        <div class="stage-info">
+          <span class="stage-name">Phase 2</span>
+          <span class="stage-label">Feature Detection</span>
+          <span class="stage-detail">SIFT · LoFTR · ORB</span>
+        </div>
+        <div class="stage-status" id="stage1">Idle</div>
+      </div>
+
+      <div class="pipeline-connector"><div class="connector-line"></div></div>
+
+      <div class="pipeline-stage" data-stage="2">
+        <div class="stage-ring">
+          <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+        </div>
+        <div class="stage-info">
+          <span class="stage-name">Phase 3</span>
+          <span class="stage-label">Geometry</span>
+          <span class="stage-detail">MAGSAC++ · GC-RANSAC</span>
+        </div>
+        <div class="stage-status" id="stage2">Idle</div>
+      </div>
+
+      <div class="pipeline-connector"><div class="connector-line"></div></div>
+
+      <div class="pipeline-stage" data-stage="3">
+        <div class="stage-ring">
+          <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+        </div>
+        <div class="stage-info">
+          <span class="stage-name">Phase 4</span>
+          <span class="stage-label">Quality Gate</span>
+          <span class="stage-detail">Inlier > 60% · RMSE < 2px</span>
+        </div>
+        <div class="stage-status" id="stage3">Idle</div>
+      </div>
+
+      <div class="pipeline-connector"><div class="connector-line"></div></div>
+
+      <div class="pipeline-stage" data-stage="4">
+        <div class="stage-ring">
+          <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+        </div>
+        <div class="stage-info">
+          <span class="stage-name">Phase 5</span>
+          <span class="stage-label">Output</span>
+          <span class="stage-detail">Overlay · Heatmap · Report</span>
+        </div>
+        <div class="stage-status" id="stage4">Idle</div>
+      </div>
+    </div>
+
+    <!-- Activity feed -->
+    <div class="activity-feed">
+      <div class="feed-header">
+        <span class="feed-title">Backend Activity</span>
+        <span class="feed-status" id="feedStatus">Standby</span>
+      </div>
+      <div class="feed-log" id="feedLog">
+        <div class="feed-line dim">Awaiting pipeline start…</div>
+      </div>
+    </div>
+
+    <!-- Feature detection visualization -->
+    <div class="feature-viz" id="featureViz" style="display:none">
+      <canvas id="featureCanvas"></canvas>
+      <div class="feature-overlay" id="featureOverlay">
+        <span class="feature-count" id="featureCount">0 keypoints</span>
+        <span class="feature-fps" id="featureFps">0 ms</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS SECTION -->
+  <section id="results" class="panel hidden">
+    <div class="panel-header">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Registration Results
+      </h2>
+      <span id="verdict" class="pill"></span>
+    </div>
+
+    <div class="results-metrics" id="tiles"></div>
+
+    <div class="results-viewer">
+      <div class="viewer-tabs" role="tablist" id="tabs"></div>
+      <div class="viewer-frame">
+        <img id="viewImg" alt="Result visualization">
+        <div class="viewer-loading" id="viewerLoading" style="display:none">
+          <div class="spinner"></div>
+          <span>Loading…</span>
+        </div>
+      </div>
+      <div class="viewer-caption" id="viewCap"></div>
+    </div>
+
+    <div class="results-footer">
+      <div class="result-meta">
+        <span class="meta-label">Geolocation</span>
+        <span class="meta-value" id="geoLine">—</span>
+      </div>
+      <div class="result-meta">
+        <span class="meta-label">Artefacts</span>
+        <span class="meta-links"><a id="dlJson" href="#">result.json</a> · <a id="dlFolder" href="#">image folder</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY SECTION -->
+  <section id="history" class="panel">
+    <div class="panel-header">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Run History
+      </h2>
+    </div>
+    <div class="table-wrap">
+      <table id="histTable">
+        <thead><tr><th>Time</th><th>Pair</th><th>Model</th><th>Verdict</th><th>RMSE</th><th>Inliers</th><th></th></tr></thead>
+        <tbody><tr><td colspan="7" class="dim">No runs yet.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ROADMAP SECTION -->
+  <section id="roadmap" class="panel">
+    <div class="panel-header">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        Pipeline Roadmap
+      </h2>
+    </div>
+    <div class="roadmap-grid">
+      <div class="roadmap-card">
+        <div class="roadmap-num">01</div>
+        <div class="roadmap-content">
+          <h3>Preprocessing</h3>
+          <p>CLAHE histogram equalization, gamma correction, shadow-invariant channel, Hapke photometric correction, multi-resolution pyramids.</p>
+          <code>src/pre1.py</code>
+        </div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-num">02</div>
+        <div class="roadmap-content">
+          <h3>Feature Detection</h3>
+          <p>Difficulty estimator (blur, texture, sun gap, scale gap) selects ORB, SIFT, or LoFTR neural matcher.</p>
+          <code>src/features.py</code>
+        </div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-num">03</div>
+        <div class="roadmap-content">
+          <h3>Geometry</h3>
+          <p>MAGSAC++ robust estimation, GC-RANSAC refinement, sub-pixel keypoint refinement via gradient descent.</p>
+          <code>src/geom.py</code>
+        </div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-num">04</div>
+        <div class="roadmap-content">
+          <h3>Quality Gate</h3>
+          <p>Pass requires inlier ratio > 60% with RMSE < 2 pixels. Otherwise triggers fallback chain.</p>
+          <code>src/pipeline.py</code>
+        </div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-num">05</div>
+        <div class="roadmap-content">
+          <h3>Output / Fallback</h3>
+          <p>Overlay, heatmap, geolocation; else model swap, stronger preprocessing, cross-modal shadow-channel retry.</p>
+          <code>server.py</code>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>Local-first · No cloud · No telemetry</span>
+    <span class="footer-sep">|</span>
+    <span id="footStat">server: checking…</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

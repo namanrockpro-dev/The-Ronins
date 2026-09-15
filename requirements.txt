@@ -1,0 +1,11 @@
+# LunarMatch core (Python 3.10, CUDA optional but recommended)
+fastapi>=0.110
+uvicorn[standard]>=0.29
+numpy>=1.24
+opencv-python>=4.8
+Pillow>=10
+matplotlib>=3.7
+scipy>=1.10
+torch>=2.0          # CUDA build for LoFTR path
+kornia>=0.7         # LoFTR; pipeline falls back to SIFT/ORB without it
+requests>=2.31      # only for tools/
