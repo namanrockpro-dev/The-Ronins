@@ -8,11 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="appBody">
 
 <!-- Animated background grid -->
 <div class="bg-grid" aria-hidden="true"></div>
 <div class="scanline" aria-hidden="true"></div>
+
+<!-- ═══ ENHANCEMENT #4: Starfield ═══ -->
+<canvas id="starfield" class="starfield-canvas" data-enh="starfield" aria-hidden="true"></canvas>
 
 <header class="topbar">
   <div class="brand">
@@ -54,7 +57,34 @@
   </div>
 </header>
 
+<!-- ═══ ENHANCEMENT #13: Toast Container ═══ -->
+<div id="toastStack" class="toast-stack" data-enh="toasts" aria-live="polite"></div>
+
 <main>
+  <!-- ═══ ENHANCEMENT #19: Tabbed Workspace ═══ -->
+  <div class="tab-bar" data-enh="tabs" id="tabBar">
+    <button class="tab-btn active" data-tab="upload">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Match
+    </button>
+    <button class="tab-btn" data-tab="pipeline">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6"/></svg>
+      Pipeline
+    </button>
+    <button class="tab-btn" data-tab="results">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Results
+    </button>
+    <button class="tab-btn" data-tab="history">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      History
+    </button>
+    <button class="tab-btn" data-tab="roadmap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+      About
+    </button>
+  </div>
+
   <!-- UPLOAD SECTION -->
   <section id="upload" class="panel">
     <div class="panel-header">
@@ -112,6 +142,376 @@
     </button>
 
     <div id="regOut" class="reg-out"></div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MISSION BRIEFING — Landing Content Below Upload
+         Fills the empty space before any images are uploaded.
+         ═══════════════════════════════════════════════════════ -->
+
+    <!-- HERO BANNER -->
+    <div class="mission-hero">
+      <div class="mission-hero-badge">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="24" stroke="var(--acc)" stroke-width="1.5" stroke-dasharray="6 4" class="spin-slow" style="transform-origin:28px 28px"/>
+          <circle cx="28" cy="28" r="16" stroke="var(--acc)" stroke-width="1" opacity="0.4"/>
+          <circle cx="28" cy="28" r="8" stroke="var(--acc)" stroke-width="0.8" opacity="0.25"/>
+          <circle cx="28" cy="28" r="4" fill="var(--acc)" class="pulse-dot"/>
+          <circle cx="38" cy="16" r="2.5" fill="var(--ok)" opacity="0.7" class="blink"/>
+          <circle cx="18" cy="40" r="2" fill="var(--acc)" opacity="0.5" class="blink-delay"/>
+        </svg>
+      </div>
+      <div class="mission-hero-text">
+        <h1 class="mission-title">LunarMatch <span class="mission-ai">AI</span></h1>
+        <p class="mission-tagline">Adaptive Self-Correcting Satellite Image Registration for Chandrayaan-2</p>
+        <div class="mission-badges">
+          <span class="m-badge">SIH 2026</span>
+          <span class="m-badge">Problem: SIH26166</span>
+          <span class="m-badge team">Team Ronins</span>
+          <span class="m-badge">Lead: Naman Mishra</span>
+          <span class="m-badge">Quantum University</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYSTEM STATS -->
+    <div class="sys-stats">
+      <div class="sys-stat">
+        <div class="sys-stat-val">3</div>
+        <div class="sys-stat-label">Matching Engines</div>
+        <div class="sys-stat-detail">ORB · SIFT · LoFTR</div>
+      </div>
+      <div class="sys-stat">
+        <div class="sys-stat-val">&lt;2px</div>
+        <div class="sys-stat-label">Sub-Pixel RMSE</div>
+        <div class="sys-stat-detail">Lucas-Kanade Refined</div>
+      </div>
+      <div class="sys-stat">
+        <div class="sys-stat-val">900MB+</div>
+        <div class="sys-stat-label">Strip Support</div>
+        <div class="sys-stat-detail">Memory-Mapped PDS4</div>
+      </div>
+      <div class="sys-stat">
+        <div class="sys-stat-val">3</div>
+        <div class="sys-stat-label">Sensors Supported</div>
+        <div class="sys-stat-detail">OHRC · TMC-2 · IIRS</div>
+      </div>
+      <div class="sys-stat">
+        <div class="sys-stat-val">5</div>
+        <div class="sys-stat-label">Pipeline Phases</div>
+        <div class="sys-stat-detail">Self-Correcting Fallback</div>
+      </div>
+      <div class="sys-stat">
+        <div class="sys-stat-val">0</div>
+        <div class="sys-stat-label">Cloud Dependencies</div>
+        <div class="sys-stat-detail">Fully Offline / Local</div>
+      </div>
+    </div>
+
+    <!-- MISSION BRIEFING -->
+    <div class="briefing-section">
+      <div class="briefing-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>Mission Briefing</span>
+      </div>
+
+      <div class="briefing-content">
+        <div class="briefing-block">
+          <h3>▸ Objective</h3>
+          <p>India's Chandrayaan-2 orbiter carries three imaging instruments — <strong>OHRC</strong> (25 cm/px), <strong>TMC-2</strong> (5 m/px), and <strong>IIRS</strong> (256-band hyperspectral). These generate massive image strips of the lunar surface under varying illumination conditions. Accurately registering a reference region within a full target scene is essential for change detection, landing site selection, and geological mapping. LunarMatch AI solves this as an adaptive, self-correcting registration pipeline that works entirely offline.</p>
+        </div>
+
+        <div class="briefing-block">
+          <h3>▸ The Problem</h3>
+          <p>Lunar surface images are uniquely challenging. There is no atmosphere for scattering — shadows are razor-sharp. The same crater can look completely different under two sun angles. Resolution varies by 200× between sensors. Traditional feature matchers fail when illumination changes dramatically, and manual registration of 900 MB strips is impractical. The system must automatically detect, match, verify, and report — or intelligently fall back to an alternative strategy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORE TECHNOLOGY CARDS -->
+    <div class="tech-section">
+      <div class="briefing-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m-5.66-2.34 4.24-4.24m0-6.72L6.34 6.34"/></svg>
+        <span>Core Technology Stack</span>
+      </div>
+
+      <div class="tech-grid">
+        <!-- LoFTR -->
+        <details class="tech-card">
+          <summary class="tech-summary">
+            <div class="tech-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <div class="tech-text">
+              <span class="tech-name">LoFTR Neural Matcher</span>
+              <span class="tech-brief">Transformer-based dense correspondence without keypoint detection</span>
+            </div>
+            <span class="tech-arrow">▸</span>
+          </summary>
+          <div class="tech-detail">
+            <p>LoFTR (Detector-Free Local Feature Matching with Transformers) replaces the traditional detect-then-describe paradigm. Instead of finding keypoints first, it uses a <strong>coarse-to-fine transformer architecture</strong> to establish dense pixel correspondences directly between two images.</p>
+            <p>The model processes both images through a CNN backbone, then uses self-attention and cross-attention transformer layers to reason about relationships between all pixel positions simultaneously. This allows it to match textureless or repetitive regions where classical detectors like SIFT or ORB fail completely.</p>
+            <p>In LunarMatch, LoFTR is the <strong>high-confidence matcher</strong> — selected automatically when the difficulty estimator detects challenging conditions (high blur, low texture, large sun angle difference). It runs on GPU via PyTorch + Kornia with automatic CPU fallback.</p>
+            <div class="tech-specs-mini">
+              <span>Backend: PyTorch + Kornia</span>
+              <span>Weights: outdoor pretrained</span>
+              <span>Confidence gate: &gt; 0.15</span>
+              <span>File: src/features.py</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- SIFT -->
+        <details class="tech-card">
+          <summary class="tech-summary">
+            <div class="tech-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><circle cx="11" cy="11" r="3" opacity="0.4"/></svg>
+            </div>
+            <div class="tech-text">
+              <span class="tech-name">SIFT Feature Detector</span>
+              <span class="tech-brief">Scale-invariant keypoint detection with 128-D descriptors</span>
+            </div>
+            <span class="tech-arrow">▸</span>
+          </summary>
+          <div class="tech-detail">
+            <p>Scale-Invariant Feature Transform detects <strong>blob-like keypoints</strong> at multiple scales using Difference-of-Gaussian (DoG) pyramids. Each keypoint gets a 128-dimensional descriptor based on local gradient orientations, making it robust to scale changes and moderate viewpoint shifts.</p>
+            <p>In LunarMatch, SIFT serves as the <strong>workhorse matcher</strong> for medium-difficulty pairs. It is selected when difficulty is between 0.30 and 0.55. We use up to 8000 keypoints with a contrast threshold of 0.01, matched via FLANN (5 KD-trees) with Lowe's ratio test at 0.75.</p>
+            <p>SIFT also provides the <strong>baseline comparison metric</strong> — every result shows "Our Pipeline vs SIFT Baseline" so evaluators can see the adaptive improvement.</p>
+            <div class="tech-specs-mini">
+              <span>nfeatures: 8000</span>
+              <span>Ratio test: 0.75</span>
+              <span>FLANN: 5 trees / 50 checks</span>
+              <span>File: src/features.py</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Preprocessing -->
+        <details class="tech-card">
+          <summary class="tech-summary">
+            <div class="tech-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="tech-text">
+              <span class="tech-name">Lunar Preprocessing Engine</span>
+              <span class="tech-brief">CLAHE + Hapke correction + shadow-invariant imaging</span>
+            </div>
+            <span class="tech-arrow">▸</span>
+          </summary>
+          <div class="tech-detail">
+            <p>The Moon has <strong>no atmosphere</strong>. Shadows are absolute black with razor-sharp edges. Two images of the same surface under different sun angles can be completely unrecognizable to each other. Our preprocessing chain is specifically designed for this:</p>
+            <ul class="tech-list">
+              <li><strong>Bilateral Filtering</strong> — Smooths noise while preserving crater edges</li>
+              <li><strong>Percentile Normalization</strong> — Clips extreme values (2nd–98th percentile) to use the full dynamic range</li>
+              <li><strong>CLAHE</strong> — Contrast Limited Adaptive Histogram Equalization with clip=1.8 on 8×8 tiles brings out surface detail in shadowed regions</li>
+              <li><strong>Hapke Photometric Correction</strong> — Uses incidence angle metadata to mathematically reduce illumination-dependent brightness variation, based on the Hapke bidirectional reflectance model used in planetary science</li>
+              <li><strong>Shadow-Invariant Channel</strong> — Computes Sobel gradient magnitudes to extract structural features that remain visible regardless of lighting direction</li>
+              <li><strong>Adaptive Blending</strong> — Final image is 70% photometric + 30% structural, creating a representation that is robust under any illumination</li>
+            </ul>
+            <div class="tech-specs-mini">
+              <span>CLAHE: clip=1.8, 8×8</span>
+              <span>Blend: 0.7 Hapke + 0.3 shadow</span>
+              <span>Pyramid: 4 levels</span>
+              <span>File: src/pre1.py</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Geometry -->
+        <details class="tech-card">
+          <summary class="tech-summary">
+            <div class="tech-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <div class="tech-text">
+              <span class="tech-name">Geometric Verification</span>
+              <span class="tech-brief">MAGSAC++ with GC-RANSAC refinement and sub-pixel accuracy</span>
+            </div>
+            <span class="tech-arrow">▸</span>
+          </summary>
+          <div class="tech-detail">
+            <p>Raw feature matches always contain outliers — incorrect correspondences that would ruin the geometric estimate. Our verification pipeline removes them through progressively tighter filtering:</p>
+            <ul class="tech-list">
+              <li><strong>MAGSAC++</strong> — Marginalizing Sample Consensus estimates homography/affine transforms without needing a manual inlier threshold. It automatically adapts to the noise level in each image pair</li>
+              <li><strong>GC-RANSAC Refinement</strong> — Graph-Cut RANSAC provides a second pass that exploits spatial coherency among inliers for tighter estimation</li>
+              <li><strong>Sub-Pixel Refinement</strong> — cv2.cornerSubPix() and Lucas-Kanade optical flow push keypoint locations from integer pixels to fractional precision (e.g., x=100 → x=100.27)</li>
+              <li><strong>ANMS</strong> — Adaptive Non-Maximal Suppression distributes matches across an 8×8 grid to prevent clustering in one region</li>
+            </ul>
+            <div class="tech-specs-mini">
+              <span>Method: Homography / Affine</span>
+              <span>RANSAC: 10000 iterations</span>
+              <span>Sub-pixel: cornerSubPix + LK</span>
+              <span>File: src/geom.py</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Adaptive Pipeline -->
+        <details class="tech-card">
+          <summary class="tech-summary">
+            <div class="tech-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="tech-text">
+              <span class="tech-name">Self-Correcting Pipeline</span>
+              <span class="tech-brief">Automatic fallback chain — adjusts strategy when quality gate fails</span>
+            </div>
+            <span class="tech-arrow">▸</span>
+          </summary>
+          <div class="tech-detail">
+            <p>This is what makes LunarMatch <strong>adaptive</strong>. Instead of a fixed algorithm, the system evaluates its own results and retries with a different strategy if quality is insufficient:</p>
+            <ul class="tech-list">
+              <li><strong>Quality Gate</strong> — Pass requires inlier ratio &gt; 60% AND RMSE &lt; 2.0 pixels. Marginal: inlier &gt; 35% AND RMSE &lt; 4.0. Otherwise: fallback</li>
+              <li><strong>Round 1</strong> — Standard preprocessing with difficulty-selected matcher (ORB/SIFT/LoFTR)</li>
+              <li><strong>Round 2</strong> — Stronger Hapke correction + enhanced processing chain + model swap</li>
+              <li><strong>Round 3</strong> — Full shadow-invariant channel with cross-modal matching</li>
+              <li><strong>Difficulty Estimator</strong> — Analyzes blur, texture entropy, sun angle difference, resolution gap to select the optimal matcher automatically</li>
+            </ul>
+            <p>The system tries up to 3 rounds, switching between ORB → SIFT → LoFTR (or any adaptive ordering) until the quality gate passes or all strategies are exhausted.</p>
+            <div class="tech-specs-mini">
+              <span>Gate: 60% inliers + 2px RMSE</span>
+              <span>Max rounds: 3</span>
+              <span>Auto model selection</span>
+              <span>File: src/pipeline.py</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- PDS4 I/O -->
+        <details class="tech-card">
+          <summary class="tech-summary">
+            <div class="tech-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="tech-text">
+              <span class="tech-name">Chandrayaan-2 PDS4 Reader</span>
+              <span class="tech-brief">Native support for PRADAN ZIP archives up to 900MB+</span>
+            </div>
+            <span class="tech-arrow">▸</span>
+          </summary>
+          <div class="tech-detail">
+            <p>Chandrayaan-2 science data is distributed by <strong>ISRO's PRADAN portal</strong> in PDS4 format — ZIP archives containing XML labels and binary image payloads. These files can be enormous (TMC-2 strips reach 900 MB+).</p>
+            <p>Our I/O module handles this natively without loading the entire file into RAM:</p>
+            <ul class="tech-list">
+              <li><strong>ZIP Extraction</strong> — Extracts only the image payload, not the entire archive</li>
+              <li><strong>NumPy Memory-Mapping</strong> — Uses np.memmap to access pixel data on disk without full materialization</li>
+              <li><strong>Metadata Extraction</strong> — Parses XML labels for sensor type, sun azimuth/elevation, incidence angle, corner coordinates, observation time</li>
+              <li><strong>Multi-Sensor</strong> — Automatically identifies OHRC (25 cm), TMC-2 (5 m), IIRS (256-band) and applies sensor-appropriate processing</li>
+              <li><strong>IIRS Hyperspectral</strong> — Selects representative bands from the 256-channel cube to create a matchable composite</li>
+            </ul>
+            <div class="tech-specs-mini">
+              <span>Formats: PDS4 ZIP, PNG, TIFF</span>
+              <span>Max tested: 900MB strip</span>
+              <span>Memory: disk-mapped</span>
+              <span>File: src/io_pds.py</span>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- FUTURE INNOVATIONS -->
+    <div class="future-section">
+      <div class="briefing-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Future Innovations</span>
+      </div>
+
+      <div class="future-grid">
+        <div class="future-card">
+          <div class="future-num">01</div>
+          <div class="future-content">
+            <h4>Fine-Tuned Lunar LoFTR</h4>
+            <p>Train a LoFTR variant specifically on <strong>lunar surface imagery</strong> — craters, rilles, mares, highlands under extreme lighting. The current outdoor-pretrained weights work well, but a model fine-tuned on thousands of Chandrayaan-2 image pairs would dramatically improve matching confidence on textureless regolith and shadowed polar regions.</p>
+            <div class="future-status">
+              <span class="status-dot planned"></span>
+              Planned — Dataset curation in progress
+            </div>
+          </div>
+        </div>
+
+        <div class="future-card">
+          <div class="future-num">02</div>
+          <div class="future-content">
+            <h4>Safe Rover Landing Zone Prediction</h4>
+            <p>Use the registration pipeline's geometric understanding to identify <strong>flat, shadow-free, boulder-free landing zones</strong>. By combining multi-temporal registered images with slope analysis from stereo TMC-2 pairs, the system could automatically score candidate landing sites for future missions like Chandrayaan-4.</p>
+            <div class="future-status">
+              <span class="status-dot research"></span>
+              Research — Feasibility study phase
+            </div>
+          </div>
+        </div>
+
+        <div class="future-card">
+          <div class="future-num">03</div>
+          <div class="future-content">
+            <h4>Temporal Change Detection</h4>
+            <p>With sub-pixel registration accuracy, compare images of the same region taken <strong>months apart</strong> to detect surface changes — new impact craters, regolith movement, volatile deposits near permanently shadowed regions. This requires the registration quality that LunarMatch provides as a prerequisite.</p>
+            <div class="future-status">
+              <span class="status-dot planned"></span>
+              Planned — Dependent on registration accuracy
+            </div>
+          </div>
+        </div>
+
+        <div class="future-card">
+          <div class="future-num">04</div>
+          <div class="future-content">
+            <h4>Cross-Sensor Fusion</h4>
+            <p>Register OHRC (25 cm visible) onto IIRS (256-band hyperspectral) to create <strong>high-resolution mineralogy maps</strong>. This combines the spatial detail of OHRC with the spectral richness of IIRS, enabling identification of specific minerals at unprecedented resolution.</p>
+            <div class="future-status">
+              <span class="status-dot research"></span>
+              Research — Cross-modal matching prototype
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE FLOW -->
+    <div class="arch-section">
+      <div class="briefing-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>System Architecture</span>
+      </div>
+      <div class="arch-flow">
+        <div class="arch-node">
+          <div class="arch-icon">📤</div>
+          <div class="arch-label">Upload</div>
+          <div class="arch-sub">Reference + Target</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-icon">🔬</div>
+          <div class="arch-label">Preprocess</div>
+          <div class="arch-sub">CLAHE · Hapke · Shadow</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-icon">🧠</div>
+          <div class="arch-label">Match</div>
+          <div class="arch-sub">ORB · SIFT · LoFTR</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-icon">📐</div>
+          <div class="arch-label">Geometry</div>
+          <div class="arch-sub">MAGSAC++ · RANSAC</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-icon">✓</div>
+          <div class="arch-label">Quality</div>
+          <div class="arch-sub">Gate / Fallback</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-icon">📊</div>
+          <div class="arch-label">Report</div>
+          <div class="arch-sub">Overlay · Metrics</div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- PIPELINE SECTION -->
@@ -123,7 +523,6 @@
       </h2>
     </div>
 
-    <!-- Animated pipeline visualization -->
     <div class="pipeline-vis" id="pipelineVis">
       <div class="pipeline-stage" data-stage="0">
         <div class="stage-ring">
@@ -139,9 +538,7 @@
         </div>
         <div class="stage-status" id="stage0">Idle</div>
       </div>
-
       <div class="pipeline-connector"><div class="connector-line"></div></div>
-
       <div class="pipeline-stage" data-stage="1">
         <div class="stage-ring">
           <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
@@ -156,9 +553,7 @@
         </div>
         <div class="stage-status" id="stage1">Idle</div>
       </div>
-
       <div class="pipeline-connector"><div class="connector-line"></div></div>
-
       <div class="pipeline-stage" data-stage="2">
         <div class="stage-ring">
           <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
@@ -173,9 +568,7 @@
         </div>
         <div class="stage-status" id="stage2">Idle</div>
       </div>
-
       <div class="pipeline-connector"><div class="connector-line"></div></div>
-
       <div class="pipeline-stage" data-stage="3">
         <div class="stage-ring">
           <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
@@ -190,9 +583,7 @@
         </div>
         <div class="stage-status" id="stage3">Idle</div>
       </div>
-
       <div class="pipeline-connector"><div class="connector-line"></div></div>
-
       <div class="pipeline-stage" data-stage="4">
         <div class="stage-ring">
           <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" stroke-dasharray="226" stroke-dashoffset="226" class="ring-progress"/></svg>
@@ -209,10 +600,10 @@
       </div>
     </div>
 
-    <!-- Activity feed -->
     <div class="activity-feed">
       <div class="feed-header">
         <span class="feed-title">Backend Activity</span>
+        <span class="runtime-timer" data-enh="timer" id="runtimeTimer">⏱ 00:00.0</span>
         <span class="feed-status" id="feedStatus">Standby</span>
       </div>
       <div class="feed-log" id="feedLog">
@@ -220,7 +611,6 @@
       </div>
     </div>
 
-    <!-- Feature detection visualization -->
     <div class="feature-viz" id="featureViz" style="display:none">
       <canvas id="featureCanvas"></canvas>
       <div class="feature-overlay" id="featureOverlay">
@@ -238,14 +628,59 @@
         Registration Results
       </h2>
       <span id="verdict" class="pill"></span>
+      <div class="enh-gauge-wrap" data-enh="gauge">
+        <svg id="confGauge" viewBox="0 0 200 120" class="conf-gauge">
+          <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="var(--line)" stroke-width="10" stroke-linecap="round"/>
+          <path id="gaugeArc" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="var(--ok)" stroke-width="10" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"/>
+          <text id="gaugeText" x="100" y="85" text-anchor="middle" fill="var(--ink)" font-size="26" font-weight="700" style="font-family:var(--mono)">—</text>
+          <text x="100" y="108" text-anchor="middle" fill="var(--dim)" font-size="9" style="font-family:var(--mono)">CONFIDENCE</text>
+        </svg>
+      </div>
     </div>
 
     <div class="results-metrics" id="tiles"></div>
+
+    <div class="enh-bars-wrap" data-enh="bars" id="barsWrap" style="display:none">
+      <div class="bars-title">Our Pipeline vs SIFT Baseline</div>
+      <div class="bar-row">
+        <span class="bar-label">Our Pipeline</span>
+        <div class="bar-track"><div class="bar-fill bar-ours" id="barOurs"></div></div>
+        <span class="bar-val" id="barOursVal">0</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">SIFT Baseline</span>
+        <div class="bar-track"><div class="bar-fill bar-baseline" id="barBase"></div></div>
+        <span class="bar-val" id="barBaseVal">0</span>
+      </div>
+      <div class="bar-improvement" id="barImprove"></div>
+    </div>
+
+    <div class="enh-radar-wrap" data-enh="radar" id="radarWrap" style="display:none">
+      <div class="radar-title">Quality Radar</div>
+      <svg id="radarChart" viewBox="0 0 300 300" class="radar-svg">
+        <g id="radarGrid"></g>
+        <polygon id="radarPoly" fill="rgba(232, 163, 61, 0.25)" stroke="var(--acc)" stroke-width="2"/>
+        <g id="radarLabels"></g>
+        <g id="radarDots"></g>
+      </svg>
+    </div>
 
     <div class="results-viewer">
       <div class="viewer-tabs" role="tablist" id="tabs"></div>
       <div class="viewer-frame">
         <img id="viewImg" alt="Result visualization">
+        <canvas id="heatmapCanvas" class="heatmap-overlay" data-enh="heatmap" style="display:none"></canvas>
+        <div id="calloutLayer" class="callout-layer" data-enh="callouts"></div>
+        <div class="viewer-toggles">
+          <button class="v-toggle" id="toggleHeatmap" data-enh="heatmap" title="Toggle match density heatmap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Heatmap
+          </button>
+          <button class="v-toggle" id="toggleCallouts" data-enh="callouts" title="Toggle annotation callouts">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Notes
+          </button>
+        </div>
         <div class="viewer-loading" id="viewerLoading" style="display:none">
           <div class="spinner"></div>
           <span>Loading…</span>
@@ -253,6 +688,14 @@
       </div>
       <div class="viewer-caption" id="viewCap"></div>
     </div>
+
+    <details class="enh-specs" data-enh="specs" id="specsPanel" style="display:none">
+      <summary class="specs-summary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Technical Parameters
+      </summary>
+      <div class="specs-grid" id="specsGrid"></div>
+    </details>
 
     <div class="results-footer">
       <div class="result-meta">
